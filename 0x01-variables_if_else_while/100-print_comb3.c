@@ -11,9 +11,9 @@ int main(void)
 
 	while (n < '9')
 	{
-		while (m < '9')
+		while (m <= '9')
 		{
-			if (!(n > m) || n == m)
+			if (!(n > m) || (n == m))
 			{
 				putchar(n);
 				putchar(m);
