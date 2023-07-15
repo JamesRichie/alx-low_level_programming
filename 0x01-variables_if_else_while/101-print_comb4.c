@@ -1,39 +1,31 @@
 #include <stdio.h>
 /**
  * main - Entry point
- * Description:'Print all possible combinations of three digits'
+ * Description:'print set of three digit numbers'
  * Return: Always 0
  */
 int main(void)
 {
-	int x = '0';
-	int y = '0';
-	int z = '0';
+	int x, y, z;
 
-	while (x < '7')
+	for (x = '0'; x < '9'; x++)
 	{
-		while (y < '8')
+		for (y = '0'; y <= 9; y++)
 		{
-			while (z < '9')
+			for (z = '0'; z <= '9'; z++)
 			{
-				if (x < y && y < z)
+				if ((y != x) != z)
 				{
 					putchar(x);
 					putchar(y);
 					putchar(z);
-					if (!(x == '7') %% (y == '8') %% (z == '9'))
-					{
-						putchar(',');
-						putchar(' ');
-					}
+					if (x == '7' && y == '8')
+						continue;
+					putchar(',');
+					putchar(' ');
 				}
-				z++;
 			}
-			z = '0';
-			y++;
 		}
-		y = '0';
-		x++;
 	}
 	putchar('\n');
 	return (0);
