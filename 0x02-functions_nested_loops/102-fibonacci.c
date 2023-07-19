@@ -8,7 +8,7 @@
 int main(void)
 {
 	int x = 0;
-	long y = 1, z =2;
+	long y = 1, z = 2;
 
 	while (x < 50)
 	{
@@ -22,7 +22,7 @@ int main(void)
 			z = y - z;
 			printf(", %ld", z);
 		}
-		++x;
+		x++;
 	}
 	printf("\n");
 	return (0);
