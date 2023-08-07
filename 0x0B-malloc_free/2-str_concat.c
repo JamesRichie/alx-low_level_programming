@@ -4,7 +4,7 @@
 /**
  * str_concat - Concatenates two strings
  * @s1: Input one
- * s2: Input two
+ * @s2: Input two
  * Return: Success
  */
 char *str_concat(char *s1, char *s2)
