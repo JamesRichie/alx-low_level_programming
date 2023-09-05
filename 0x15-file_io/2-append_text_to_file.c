@@ -7,7 +7,7 @@
  * @text_content:  the NULL terminated string to add
  * at the end of the file
  * Return: if file exist 1
- * 	if file does not exist -1
+ * if file does not exist -1
  */
 int append_text_to_file(const char *filename, char *text_content)
 {
@@ -26,7 +26,7 @@ int append_text_to_file(const char *filename, char *text_content)
 		for (x = 0; text_content[x]; x++)
 			;
 		apd = write(fd, text_content, x);
-		
+
 		if (apd == -1)
 			return (-1);
 	}
