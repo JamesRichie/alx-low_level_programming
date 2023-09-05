@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * read_textfile - Reads a textfile and prints it to the 
+ * read_textfile - Reads a textfile and prints it to the
  * POSTX standard output
  * @letters: The number of letters to be read and printed
  * @filename: Pointer to the file name
@@ -19,7 +19,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (0);
-	
+
 	chrs = malloc(sizeof(filename) * letters);
 	if (chrs == NULL)
 		return (0);
