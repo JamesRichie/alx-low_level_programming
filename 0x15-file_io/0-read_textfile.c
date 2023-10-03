@@ -1,38 +1,48 @@
 #include "main.h"
 
 /**
- * read_textfile - Reads a textfile and prints it to the
- * POSTX standard output
- * @letters: The number of letters to be read and printed
- * @filename: Pointer to the file name
- * Return: 0
+ * read_textfile - function that reads a
+ * text file and prints it to the POSIX standard output.
+ * @filename: filename
+ * @letters: number of letters to print
+ * Return: Number of letters || 0
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	ssize_t t1, t2;
-	int fd;
-	char *chrs;
+	int f;
 
-	if (filename == NULL)
+	ssize_t _read, _write;
+
+	char *buff;
+
+	if (!filename)
+	{
+		return (0);
+	}
+
+	f = open(filename, O_RDONLY);
+	if (f == -1)
 		return (0);
 
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
+	buff = malloc(sizeof(char) * letters);
+	if (buff == NULL)
 		return (0);
 
-	chrs = malloc(sizeof(filename) * letters);
-	if (chrs == NULL)
+	_read = read(f, buff, letters);
+	if (_read == -1)
+	{
+		free(buff);
+		close(f);
 		return (0);
+	}
 
-	t1 = read(fd, chrs, letters);
-	if (t1 < 0)
+	_write = write(STDOUT_FILENO, buff, _read);
+	if (_write == -1)
+	{
+		free(buff);
+		close(f);
 		return (0);
-
-	t2 = write(STDOUT_FILENO, chrs, t1);
-	if (t2 < 0)
-		return (0);
-
-	free(chrs);
-	close(fd);
-	return (t2);
+	}
+	close(f);
+	return (_read);
 }
